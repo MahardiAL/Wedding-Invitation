@@ -9,8 +9,8 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #fff8f0 0%, #fff0e6 100%);
-    color: #8B4513;
+    background-color: #FDF7F7; /* Very light Dusty Rose */
+    color: #1A2B42; /* Navy for main text */
     overflow-x: hidden;
     min-height: 100vh;
     position: relative;
@@ -42,30 +42,29 @@ body {
 
 .cover-top, .cover-bottom h1 {
     font-family: 'Great Vibes', cursive;
-    font-size: 48px;
+    font-size: 52px; /* Slightly larger for more impact */
     color: white;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .cover-top, .cover-bottom p {
-    color: white;
+    color: #f0f0f0; /* Softer white */
     font-size: 18px;
     margin-bottom: 30px;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 .open-btn {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    border: 2px solid white;
+    background: #D4A6A6; /* Dusty Rose */
+    border: 1px solid #D4A6A6;
     color: white;
     padding: 12px 30px;
     font-size: 16px;
     font-weight: 500;
-    border-radius: 30px;
+    border-radius: 4px; /* Sharper corners */
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
     font-family: 'Poppins', sans-serif;
     display: inline-flex;
     align-items: center;
@@ -73,7 +72,7 @@ body {
 }
 
 .open-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
+    background: #B28C8C; /* Darker Dusty Rose on hover */
     transform: scale(1.05);
 }
 
@@ -97,11 +96,10 @@ body {
     border-radius: 20px;
     padding: 30px;
     margin-bottom: 25px;
-    box-shadow: 0 10px 30px rgba(139, 69, 19, 0.1);
+    box-shadow: 0 4px 20px rgba(84, 66, 51, 0.08); /* Softer shadow */
     position: relative;
     overflow: hidden;
 }
-
 .section::before {
     content: "";
     position: absolute;
@@ -109,25 +107,95 @@ body {
     left: 50%;
     transform: translateX(-50%);
     width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, #d4af37, #f8c3cd, #d4af37);
+    height: 2px; /* Thinner separator */
+    background: #E0E0E0; /* Light Grey separator */
     border-radius: 2px;
+}
+
+/* Animation Item Classes */
+.anim-item {
+    opacity: 0; /* Keep opacity 0 for initial state */
+    transform: scale(0.9);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.anim-item.is-visible {
+    opacity: 1;
+    transform: scale(1);
+}
+/* Staggered Delay Classes - Increased delay for more pronounced effect */
+.delay-1 { transition-delay: 0.15s; }
+.delay-2 { transition-delay: 0.25s; }
+.delay-3 { transition-delay: 0.35s; }
+.delay-4 { transition-delay: 0.45s; }
+.delay-5 { transition-delay: 0.55s; }
+.delay-6 { transition-delay: 0.65s; }
+/* Add more if needed */
+
+.bible-verse-section {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('background2.jpeg') center/cover no-repeat; /* Using an existing image */
+    box-shadow: none;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 60vh;
+    text-align: center;
+    color: white;
+}
+
+.bible-verse-section::before {
+    display: none; /* Menghilangkan garis emas di atas untuk bagian ini */
+}
+
+.bible-verse-section .section-title,
+.bible-verse-section .names {
+    color: white;
+    margin-bottom: 10px; /* Adjusted spacing */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    margin-top: 0; /* Mengurangi jarak atas dari judul */
+}
+
+.bible-verse {
+    text-align: center;
+    font-style: italic;
+    font-family: 'Playfair Display', serif; /* Menggunakan font serif yang elegan */
+    max-width: 650px;
+    margin: 0 auto;
+    border: none; /* Menghilangkan border default dari blockquote */
+    padding: 0;
+}
+
+.bible-verse footer {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 15px;
 }
 
 .section-title {
     font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: #d4af37;
+    font-size: 22px; /* Smaller font size as per reference */
+    font-weight: 400; /* Lighter weight */
+    color: #D4A6A6; /* Dusty Rose */
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* More space below title */
     position: relative;
+    text-transform: uppercase; /* Uppercase as per reference */
+    letter-spacing: 2px; /* Letter spacing as per reference */
 }
 
+.subsection-title {
+    margin-top: 40px; /* Menambahkan jarak di atas judul sub-bagian */
+    padding-top: 20px; /* Menambahkan sedikit padding di atas */
+    border-top: 1px solid #E0E0E0; /* Light Grey separator */
+}
 .names {
     font-family: 'Great Vibes', cursive;
     font-size: 42px;
-    color: #8B4513;
+    color: #1A2B42; /* Navy */
     text-align: center;
     margin: 20px 0;
     line-height: 1.2;
@@ -136,7 +204,7 @@ body {
 .date-venue {
     text-align: center;
     margin: 20px 0;
-    font-size: 18px;
+    font-size: 16px; /* Slightly smaller for cleaner look */
 }
 
 .map-btn {
@@ -144,18 +212,18 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-top: 20px;
-    background: #8B4513;
+    margin-top: 15px;
+    background: #D4A6A6; /* Dusty Rose */
     color: white;
-    padding: 10px 25px;
-    border-radius: 8px;
+    padding: 12px 28px;
+    border-radius: 4px; /* Sharper corners */
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
 }
 .map-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    background: #B28C8C; /* Darker Dusty Rose on hover */
+    box-shadow: 0 5px 15px rgba(212, 166, 166, 0.3);
 }
 
 /* Countdown Timer */
@@ -168,7 +236,7 @@ body {
 }
 
 .countdown-timer div {
-    background: #fdf6f0;
+    background: #fbf8f5; /* Lighter than main bg */
     padding: 10px;
     border-radius: 10px;
     min-width: 70px;
@@ -178,16 +246,16 @@ body {
 .countdown-timer span:first-child {
     display: block;
     font-size: 28px;
-    font-weight: 700;
-    color: #d4af37;
+    font-weight: 600; /* Slightly lighter weight */
+    color: #D4A6A6; /* Dusty Rose */
     line-height: 1.1;
 }
 
 .countdown-timer span:last-child {
     font-size: 11px;
     text-transform: uppercase;
-    color: #8B4513;
-    opacity: 0.8;
+    color: #4A5C73; /* Lighter Navy */
+    opacity: 1;
 }
 
 .calendar-btn {
@@ -196,112 +264,86 @@ body {
     justify-content: center;
     gap: 10px;
     margin-top: 25px;
-    background: #8B4513;
+    background: #D4A6A6; /* Dusty Rose */
     color: white;
-    padding: 10px 25px;
-    border-radius: 8px;
+    padding: 12px 28px;
+    border-radius: 4px; /* Sharper corners */
     text-decoration: none;
     font-weight: 500;
     transition: all 0.3s ease;
 }
 .calendar-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-}
-/* Carousel Wrapper */
-.carousel-wrapper {
-    position: relative;
-    max-width: 400px; /* Lebar potret */
-    margin: 30px auto; /* Pusatkan carousel */
-    padding: 0 50px; /* Ruang untuk tombol navigasi */
+    background: #B28C8C; /* Darker Dusty Rose on hover */
+    box-shadow: 0 5px 15px rgba(212, 166, 166, 0.3);
 }
 
-/* Carousel */
-.carousel {
-    position: relative;
+/* Photo Album */
+.photo-album {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Membuat 2 kolom */
+    gap: 15px;
+    margin-top: 20px;
+    
+    /* Make it vertically scrollable with fixed height */
+    max-height: 600px; /* Adjust as needed for desktop */
+    overflow-y: auto;
+    padding-right: 10px; /* Space for scrollbar */
+    
+    /* Custom scrollbar styling for Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #D4A6A6 rgba(26, 43, 66, 0.05); /* Dusty Rose scrollbar */
+}
+
+/* Custom scrollbar for Webkit browsers */
+.photo-album::-webkit-scrollbar {
+    width: 8px;
+}
+
+.photo-album::-webkit-scrollbar-track {
+    background: rgba(26, 43, 66, 0.05); /* Light Navy track */
+    border-radius: 10px;
+}
+
+.photo-album::-webkit-scrollbar-thumb {
+    background-color: #D4A6A6; /* Dusty Rose */
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+.photo-album::-webkit-scrollbar-thumb:hover {
+    background-color: #B28C8C; /* Darker Dusty Rose on hover */
+}
+
+.photo-item {
+    width: 100%; /* Mengisi lebar kolom grid */
+    aspect-ratio: 3 / 4; /* Menjaga rasio aspek potret */
     overflow: hidden;
     border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
+    box-shadow: 0 5px 15px rgba(74, 74, 74, 0.08);
+    background-color: #FDF7F7; /* Light Dusty Rose background */
+    display: flex; /* Use flexbox to center image if it doesn't fill */
+    justify-content: center;
+    align-items: center;
 }
 
-.carousel-container {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-slide {
-    min-width: 100%;
-    /* Rasio aspek potret (misal: 3:4) */
-    aspect-ratio: 3 / 4;
-}
-
-.carousel-slide img {
+.photo-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-}
-
-.carousel-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.8);
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 16px;
-    color: #8B4513;
-    transition: all 0.3s ease;
-}
-
-.carousel-nav:hover {
-    background: white;
-    transform: translateY(-50%) scale(1.1);
-}
-
-.carousel-prev {
-    left: 0;
-}
-
-.carousel-next {
-    right: 0;
-}
-
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-    gap: 8px;
-}
-
-.carousel-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #d4af37;
-    opacity: 0.3;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.carousel-dot.active {
-    opacity: 1;
-    transform: scale(1.2);
+    object-fit: contain; /* Changed to contain to show full image */
 }
 
 /* Music Player */
 .music-player {
     text-align: center;
     padding: 15px;
-    background: #fdf6f0;
+    background: #FDF7F7; /* Light Dusty Rose */
     border-radius: 15px;
     margin: 20px 0;
 }
 
 .music-btn {
-    background: #d4af37;
+    background: #D4A6A6; /* Dusty Rose */
     color: white;
     border: none;
     width: 50px;
@@ -314,7 +356,7 @@ body {
 
 .music-btn:hover {
     transform: scale(1.1);
-    background: #c19a2e;
+    background: #B28C8C; /* Darker Dusty Rose on hover */
 }
 
 .music-btn.playing {
@@ -341,23 +383,24 @@ body {
 
 .form-group label {
     font-weight: 500;
-    color: #8B4513;
+    color: #4a4a4a;
 }
 
 .form-group input,
 .form-group textarea {
     padding: 12px;
-    border: 2px solid #f8c3cd;
+    border: 1px solid #ddd; /* Softer border */
     border-radius: 10px;
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #d4af37;
+    border-color: #a38970; /* New accent color */
+    box-shadow: 0 0 0 3px rgba(163, 137, 112, 0.2);
 }
 
 .form-group textarea {
@@ -366,20 +409,20 @@ body {
 }
 
 .submit-btn {
-    background: linear-gradient(135deg, #d4af37 0%, #f8c3cd 100%);
+    background: #D4A6A6; /* Dusty Rose */
     color: white;
     border: none;
     padding: 12px;
     border-radius: 10px;
     font-weight: 500;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
     font-family: 'Poppins', sans-serif;
 }
 
 .submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    background: #B28C8C; /* Darker Dusty Rose on hover */
+    box-shadow: 0 5px 15px rgba(212, 166, 166, 0.3);
 }
 
 /* Livestream Section */
@@ -396,7 +439,7 @@ body {
     justify-content: center;
     gap: 10px;
     width: fit-content;
-    margin: 0 auto; /* Center the button */
+    margin: 0 auto 25px auto; /* Center the button and add bottom margin */
     background: linear-gradient(135deg, #ff6b6b 0%, #f09433 100%);
     color: white;
     border: none;
@@ -406,13 +449,12 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: 'Poppins', sans-serif;
-    text-decoration: none; /* for <a> tag */
+    text-decoration: none;
     font-size: 16px;
 }
 
 .livestream-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    opacity: 0.9; /* Simple opacity change for hover */
 }
 
 /* Wishes Gallery */
@@ -424,17 +466,16 @@ body {
     overflow-y: auto;
     margin-top: 20px;
     padding: 10px;
-    background-color: rgba(255, 248, 240, 0.5); /* Warna latar sedikit berbeda */
+    background-color: rgba(253, 247, 247, 0.5); /* Light Dusty Rose transparent */
     border-radius: 10px;
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    border: 1px solid rgba(212, 166, 166, 0.15); /* Light Dusty Rose border */
 }
 
 .wish-card {
-    background: #ffffff;
+    background: #FFFFFF;
     border-radius: 10px;
     padding: 15px;
-    margin-bottom: 15px;
-    border-left: 4px solid #d4af37;
+    border-left: 4px solid #D4A6A6; /* Dusty Rose */
 }
 
 .wish-card-header {
@@ -453,18 +494,18 @@ body {
 
 .wish-card-header .timestamp {
     font-size: 12px;
-    color: #a0522d;
+    color: #4A5C73; /* Lighter Navy */
     flex-shrink: 0; /* Mencegah teks waktu terpotong */
     margin-left: 10px;
 }
 
 .wishes-notice {
     text-align: center;
-    font-size: 13px;
-    color: #a0522d;
+    font-size: 14px;
+    color: #4A5C73; /* Lighter Navy */
     margin-top: 25px;
     padding: 10px;
-    background-color: rgba(255, 248, 240, 0.8);
+    background-color: rgba(253, 247, 247, 0.8); /* Light Dusty Rose transparent */
     border-radius: 8px;
     font-style: italic;
 }
@@ -475,19 +516,19 @@ body {
 }
 
 .wishes-gallery::-webkit-scrollbar-track {
-  background: rgba(139, 69, 19, 0.05);
+  background: rgba(26, 43, 66, 0.05); /* Light Navy track */
   border-radius: 10px;
 }
 
 .wishes-gallery::-webkit-scrollbar-thumb {
-  background-color: #d4af37; /* Warna emas */
+  background-color: #D4A6A6; /* Dusty Rose */
   border-radius: 10px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
 .wishes-gallery::-webkit-scrollbar-thumb:hover {
-  background-color: #c19a2e; /* Warna emas lebih gelap saat hover */
+  background-color: #B28C8C; /* Darker Dusty Rose on hover */
 }
 
 /* Wedding Gift Section */
@@ -500,8 +541,8 @@ body {
     margin-right: auto;
 }
 .gift-card {
-    background: #fdf6f0;
-    border: 2px dashed #f8c3cd;
+    background: #FDF7F7; /* Light Dusty Rose */
+    border: 1px solid #e0d9d1;
     border-radius: 15px;
     padding: 25px;
     max-width: 400px;
@@ -523,15 +564,15 @@ body {
     margin-bottom: 20px;
 }
 .copy-btn {
-    background: #d4af37;
+    background: #D4A6A6; /* Dusty Rose */
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 8px;
+    border-radius: 4px; /* Sharper corners */
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-family: 'Poppins', sans-serif;
-    display: inline-flex;
+    display: inline-flex; /* Ensure it's a flex container */
     align-items: center;
     gap: 8px;
 }
@@ -556,7 +597,7 @@ body {
 .footer {
     text-align: center;
     padding: 20px;
-    color: #8B4513;
+    color: #1A2B42; /* Navy */
     opacity: 0.7;
     font-size: 14px;
 }
@@ -568,6 +609,7 @@ body {
     background: none;
     padding: 0;
     border-radius: none;
+    right: 20px;    
     display: flex;
     align-items: center;
     gap: 10px;
@@ -575,20 +617,20 @@ body {
 }
 
 .music-player button {
-    background: #ff6b6b;
+    background: #D4A6A6; /* Dusty Rose */
     color: white;
     border: none;
     width: 30px;
     height: 30px;
     border-radius: 50%;
     cursor: pointer;
-    display: flex;
+    display: flex; /* Ensure it's a flex container */
     align-items: center;
     justify-content: center;
 }
 
 .music-player span {
-    color: #8b4513;
+    /* This element is no longer present in the HTML */
     font-size: 14px;
     font-weight: 500;
 }
@@ -607,16 +649,28 @@ body {
         padding: 20px;
     }
     
-    .carousel-slide {
-        height: auto; /* Biarkan aspek rasio yang mengatur tinggi */
-    }
-    
     .section-title {
         font-size: 24px;
     }
     
     .date-venue {
         font-size: 16px;
+    }
+
+    .bible-verse-section {
+        min-height: 100vh; /* Membuat section seukuran layar di mobile */
+        padding: 20px;
+    }
+
+    .photo-album {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 10px; /* Mengurangi jarak antar foto di mobile */
+        max-height: 400px; /* Adjust max-height for mobile */
+        padding-right: 0; /* Remove scrollbar padding on mobile */
+    }
+    /* Hide scrollbar on mobile for cleaner look */
+    .photo-album::-webkit-scrollbar {
+        width: 0;
     }
 
     .countdown-timer {
@@ -684,17 +738,6 @@ audio {
     max-width: 400px;
     text-align: center;
     padding: 20px;
-    opacity: 0; /* Start transparent for animation */
-    animation: fadeInUp 0.8s ease-out forwards;
-}
-
-/* Add delays for a staggered effect */
-.content-box .profile-card:nth-of-type(1) {
-    animation-delay: 0.2s;
-}
-
-.content-box .profile-card:nth-of-type(2) {
-    animation-delay: 0.5s;
 }
 
 /* WADAH GAMBAR (Untuk kontrol bingkai lingkaran) */
@@ -704,7 +747,7 @@ audio {
     margin: 0 auto 20px auto;
     border-radius: 999px; /* Membuat bentuk kapsul */
     /* Garis emas/krem di sekeliling lingkaran */
-    border: 3px solid #C8AE7D; 
+    border: 3px solid #D4A6A6; /* Dusty Rose */
     padding: 5px; /* Jarak antara gambar dan border */
     overflow: hidden; /* Penting untuk menyembunyikan bagian luar gambar */
     position: relative; /* Untuk menempatkan dekorasi daun */
@@ -723,14 +766,14 @@ audio {
     font-family: 'Playfair Display', serif;
     font-size: 24px;
     margin-bottom: 5px;
-    color: #8B4513;
+    color: #1A2B42; /* Navy */
 }
 .text-info p {
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     line-height: 1.4;
     margin: 0;
-    color: #8B4513;
+    color: #1A2B42; /* Navy */
 }
 .text-info .role {
     margin-top: 15px;
@@ -768,11 +811,11 @@ audio {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 30px;
-    color: #C8AE7D; /* Warna emas/krem */
-    background-color: #f5f5f5; /* Latar belakang agar terlihat menonjol */
+    color: #D4A6A6; /* Dusty Rose */
+    background-color: #FDF7F7; /* Light Dusty Rose */
     padding: 10px;
     border-radius: 50%;
-    border: 1px solid #C8AE7D;
+    border: 1px solid #D4A6A6; /* Dusty Rose */
     z-index: 10;
 }
 
@@ -788,18 +831,81 @@ audio {
     /* ... Tambahkan properti positioning seperti top/left/transform untuk penempatan ... */
 }
 
-/* Animation Keyframes */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Our Story Timeline */
+.story-timeline {
+    position: relative;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px 0;
 }
 
+.story-timeline::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    bottom: 100px; /* Adjust to stop before the conclusion */
+    left: 10px; /* Position line on the left */
+    width: 2px;
+    background-color: #E0E0E0; /* Light Grey */
+    transform: translateX(0);
+}
+
+.story-item {
+    padding: 0 0 30px 40px; /* Space on the left for the line and dot */
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.story-item::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #fcfaf8;
+    border: 2px solid #D4A6A6; /* Dusty Rose */
+    top: 10px; /* Adjust position to align with text */
+    left: 5px; /* Align with the timeline bar */
+    transform: translateY(0);
+    z-index: 1;
+}
+
+.story-content {
+    background: #fff;
+    padding: 15px 20px; /* Slightly less padding */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #f0ebe5;
+}
+
+.story-content .story-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: #D4A6A6; /* Dusty Rose */
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.story-content .story-date {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    opacity: 0.8;
+}
+.story-content p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.story-conclude {
+    text-align: center;
+    padding: 20px 20px 0 20px; /* Padding atas untuk jarak, padding samping agar tidak terlalu lebar di mobile */
+    margin-top: 20px; /* Jarak dari item terakhir */
+    font-style: italic;
+    color: #4A5C73; /* Lighter Navy */
+}
 
 /* Media Query untuk Tampilan Seluler */
 @media (max-width: 768px) {
@@ -815,6 +921,12 @@ audio {
         /* Sembunyikan ampersand atau pindahkan posisinya di tampilan seluler */
         display: none; 
     }
+
+    /* The new timeline is already mobile-friendly, so no extra overrides are needed here. */
+    .story-item { padding-left: 30px; } /* Adjust padding for mobile */
+    .story-timeline::before { left: 5px; } /* Adjust line position for mobile */
+    .story-item::after { left: 0; top: 10px; } /* Adjust dot position for mobile */
+    .story-content { padding: 15px; } /* Adjust card padding for mobile */
 }
 
 .video-container {

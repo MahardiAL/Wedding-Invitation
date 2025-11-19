@@ -18,56 +18,6 @@ openBtn.addEventListener('click', () => {
     }, 600);
 });
 
-// Carousel functionality
-const carouselContainer = document.getElementById('carouselContainer');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-const carouselDots = document.querySelectorAll('.carousel-dot');
-let currentSlide = 0;
-const totalSlides = 4;
-
-function updateCarousel() {
-    carouselContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-    
-    // Update dots
-    carouselDots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentSlide);
-    });
-}
-
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    updateCarousel();
-}
-
-function prevSlide() {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    updateCarousel();
-}
-
-nextBtn.addEventListener('click', nextSlide);
-prevBtn.addEventListener('click', prevSlide);
-
-// Auto slide
-let autoSlideInterval = setInterval(nextSlide, 3000);
-
-// Pause auto slide on interaction
-carouselContainer.addEventListener('mouseenter', () => {
-    clearInterval(autoSlideInterval);
-});
-
-carouselContainer.addEventListener('mouseleave', () => {
-    autoSlideInterval = setInterval(nextSlide, 5000);
-});
-
-// Dot navigation
-carouselDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        currentSlide = index;
-        updateCarousel();
-    });
-});
-
 // Fungsi kontrol musik
 function playMusic() {
     if (!isPlaying) {
@@ -123,17 +73,31 @@ const rsvpNameInput = document.getElementById('rsvpName');
 const guestCountInput = document.getElementById('guestCount');
 const guestCountGroup = document.getElementById('guestCountGroup');
 const statusRadios = rsvpForm.querySelectorAll('input[name="entry.1413813021"]');
+const eventChoiceSelect = document.getElementById('eventChoice');
 let submittedRsvp = false;
 let submittedWishes = false;
 
 statusRadios.forEach(radio => {
     radio.addEventListener('change', () => {
-        if (radio.value === 'Yes, I will attend') {
+        const isAttending = radio.value === 'Yes, I will attend';
+        
+        if (isAttending) {
             guestCountGroup.style.display = 'block';
             guestCountInput.value = '1'; // Reset ke 1 saat memilih hadir
+            // Show event choice only if type is Closed AND user is attending
+            if (invitationType === 'Closed' && eventChoiceGroup) {
+                eventChoiceGroup.style.display = 'block';
+            }
         } else {
             guestCountGroup.style.display = 'none';
             guestCountInput.value = '0'; // Atur ke 0 saat tidak bisa hadir
+            // Always hide event choice if not attending
+            if (eventChoiceGroup) {
+                eventChoiceGroup.style.display = 'none';
+            }
+            if (eventChoiceSelect) {
+                eventChoiceSelect.value = '-'; // Set value to '-' if not attending
+            }
         }
     });
 });
@@ -155,11 +119,15 @@ if (guestName) {
 
 // Handle invitation type for reception visibility
 const invitationType = urlParams.get('type');
-const receptionSection = document.getElementById('receptionSection');
+const eventChoiceGroup = document.getElementById('eventChoiceGroup');
+const weddingDinnerSection = document.getElementById('weddingDinnerSection');
 
-// Hide reception section by default if the type is not 'Closed'
-if (receptionSection && invitationType !== 'Closed') {
-    receptionSection.style.display = 'none';
+// Show event choice dropdown only if the invitation type is 'Closed'
+if (invitationType === 'Closed') {
+    // Show Wedding Intimate Dinner section if type is 'Closed'
+    if (weddingDinnerSection) {
+        weddingDinnerSection.style.display = 'block';
+    }
 }
 
 // Iframe untuk submit form tanpa refresh
@@ -180,32 +148,6 @@ iframe.addEventListener('load', function() {
         submittedWishes = false; // Reset flag setelah alert dari wishesForm
     }
 });
-
-// Touch swipe for carousel (mobile)
-let touchStartX = 0;
-let touchEndX = 0;
-
-carouselContainer.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-});
-
-carouselContainer.addEventListener('touchend', (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-});
-
-function handleSwipe() {
-    const minSwipeDistance = 50;
-    const difference = touchStartX - touchEndX;
-    
-    if (Math.abs(difference) > minSwipeDistance) {
-        if (difference > 0) {
-            nextSlide();
-        } else {
-            prevSlide();
-        }
-    }
-}
 
 // Copy to clipboard functionality
 const copyButton = document.getElementById('copyButton');
@@ -338,9 +280,30 @@ async function loadWishes() {
         });
     } catch (error) {
         console.error('Error loading wishes:', error);
-        gallery.innerHTML = `<p class="loading-text" style="color: red;">Gagal memuat ucapan. ${error.message}</p>`;
+        gallery.innerHTML = `<p class="loading-text" style="color: red;"> ${error.message}</p>`;
     }
 }
 
 // Panggil fungsi saat halaman selesai dimuat
 document.addEventListener('DOMContentLoaded', loadWishes);
+
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible'); // Add class when element is visible
+        } else {
+            entry.target.classList.remove('is-visible'); // Remove class when element is not visible
+        }
+    });
+}, {
+    threshold: 0.1 // Trigger when 10% of the element is visible
+});
+
+// Observe all elements with the .section class
+document.addEventListener('DOMContentLoaded', () => {
+    const animatedItems = document.querySelectorAll('.anim-item');
+    animatedItems.forEach(item => {
+        observer.observe(item);
+    });
+});
