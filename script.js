@@ -16,6 +16,7 @@ openBtn.addEventListener('click', () => {
         mainContent.classList.add('visible');
         playMusic()
     }, 600);
+    window.scrollTo({ top: 0 });
 });
 
 // Fungsi kontrol musik
@@ -86,6 +87,9 @@ statusRadios.forEach(radio => {
             guestCountInput.value = '1'; // Reset ke 1 saat memilih hadir
             // Show event choice only if type is Closed AND user is attending
             if (invitationType === 'Closed' && eventChoiceGroup) {
+                if (eventChoiceSelect) {
+                    eventChoiceSelect.value = ''; // Reset pilihan acara ke default
+                }
                 eventChoiceGroup.style.display = 'block';
             }
         } else {
@@ -113,7 +117,7 @@ if (guestName) {
     rsvpNameInput.value = guestName;
     wishesNameInput.value = guestName;
     if (guestNameToElement) {
-        guestNameToElement.textContent = `Dear ${guestName}`;
+        guestNameToElement.textContent = `Dear ${guestName},`;
     }
 }
 

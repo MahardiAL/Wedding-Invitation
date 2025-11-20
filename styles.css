@@ -42,17 +42,19 @@ body {
 
 .cover-top, .cover-bottom h1 {
     font-family: 'Great Vibes', cursive;
-    font-size: 52px; /* Slightly larger for more impact */
+    font-size: 48px; /* Slightly larger for more impact */
     color: white;
     margin-bottom: 20px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-.cover-top, .cover-bottom p {
+.cover-bottom p {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
     color: #f0f0f0; /* Softer white */
     font-size: 18px;
     margin-bottom: 30px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    text-shadow: 1px 2px 2px rgba(0,0,0,0.5);
 }
 
 .open-btn {
@@ -140,7 +142,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 60vh;
+    min-height: calc(100vh - 40px - 25px); /* Full viewport height minus main-content padding and section margin */
     text-align: center;
     color: white;
 }
@@ -149,7 +151,7 @@ body {
     display: none; /* Menghilangkan garis emas di atas untuk bagian ini */
 }
 
-.bible-verse-section .section-title,
+.bible-verse-section .section-head,
 .bible-verse-section .names {
     color: white;
     margin-bottom: 10px; /* Adjusted spacing */
@@ -160,30 +162,32 @@ body {
 .bible-verse {
     text-align: center;
     font-style: italic;
-    font-family: 'Playfair Display', serif; /* Menggunakan font serif yang elegan */
+    font-family: 'Cormorant Garamond', serif; /* Font serif yang lebih klasik */
     max-width: 650px;
     margin: 0 auto;
     border: none; /* Menghilangkan border default dari blockquote */
     padding: 0;
+    font-size: 18px; /* Sedikit memperbesar ukuran font */
+    line-height: 1.5; /* Menambah jarak antar baris */
+    letter-spacing: 0.5px; /* Menambah sedikit spasi antar huruf */
 }
 
 .bible-verse footer {
     font-style: normal;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 18px;
     color: rgba(255, 255, 255, 0.8);
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
-.section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px; /* Smaller font size as per reference */
-    font-weight: 400; /* Lighter weight */
+.section-head {
+    font-family: 'Dancing Script', serif;
+    font-size: 32px; /* Smaller font size as per reference */
+    font-weight: 500; /* Lighter weight */
     color: #D4A6A6; /* Dusty Rose */
     text-align: center;
     margin-bottom: 30px; /* More space below title */
     position: relative;
-    text-transform: uppercase; /* Uppercase as per reference */
     letter-spacing: 2px; /* Letter spacing as per reference */
 }
 
@@ -194,7 +198,7 @@ body {
 }
 .names {
     font-family: 'Great Vibes', cursive;
-    font-size: 42px;
+    font-size: 48px;
     color: #1A2B42; /* Navy */
     text-align: center;
     margin: 20px 0;
@@ -395,12 +399,38 @@ body {
     font-size: 14px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+.form-group select {
+    padding: 12px;
+    border: 1px solid #ddd; /* Softer border */
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+}
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: #a38970; /* New accent color */
     box-shadow: 0 0 0 3px rgba(163, 137, 112, 0.2);
+}
+.form-group select:focus {
+    outline: none;
+    border-color: #a38970; /* New accent color */
+    box-shadow: 0 0 0 3px rgba(163, 137, 112, 0.2);
+}
+
+.form-group select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Custom arrow using SVG */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23a38970%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 10px;
+    padding-right: 40px; /* Make space for the custom arrow */
 }
 
 .form-group textarea {
@@ -440,7 +470,7 @@ body {
     gap: 10px;
     width: fit-content;
     margin: 0 auto 25px auto; /* Center the button and add bottom margin */
-    background: linear-gradient(135deg, #ff6b6b 0%, #f09433 100%);
+    background: #D4A6A6; /* Dusty Rose */
     color: white;
     border: none;
     padding: 12px 25px;
@@ -658,7 +688,7 @@ body {
     }
 
     .bible-verse-section {
-        min-height: 100vh; /* Membuat section seukuran layar di mobile */
+        min-height: calc(100vh - 40px); /* Full viewport height minus main-content padding */
         padding: 20px;
     }
 
@@ -683,7 +713,6 @@ body {
     .countdown-timer span:first-child { font-size: 22px; }
 }
 .cover-top #guestNameTo {
-    font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 18px;
     margin-bottom: 5px;
@@ -817,6 +846,14 @@ audio {
     border-radius: 50%;
     border: 1px solid #D4A6A6; /* Dusty Rose */
     z-index: 10;
+}
+
+/* Specific style for The Groom & The Bride titles */
+.profile-card .section-head {
+    font-family: 'Alex Brush', cursive;
+    font-size: 42px; /* Larger size for script font */
+    font-weight: normal; /* Script fonts usually don't need bold */
+    text-transform: capitalize; /* Make it look softer */
 }
 
 /* DEKORASI DAUN */
