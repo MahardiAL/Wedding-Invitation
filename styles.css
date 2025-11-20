@@ -1175,46 +1175,46 @@ audio {
 @keyframes backgroundCarouselVerse {
     0%, 23% {
         background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_verse_1.jpg');
-        background-size: 100% auto;
+        background-size: cover;
         background-position: center;
     }
     25%, 48% {
         background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_verse_2.jpg');
-        background-size: 100% auto;
+        background-size: cover;
         background-position: center;
     }
     50%, 73% {
         background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_verse_3.jpg');
-        background-size: 100% auto;
+        background-size: cover;
         background-position: center;
     }
     75%, 98% {
         background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_verse_4.jpg');
-        background-size: 100% auto;
+        background-size: cover;
         background-position: center;
     }
-    100% { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_verse_1.jpg'); background-size: 100% auto; background-position: center; }
+    100% { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_verse_1.jpg'); background-size: cover; background-position: center; }
 }
 @keyframes backgroundCarouselThankYou {
     0%, 23% {
         background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_thank_you_1.jpg');
-        background-size: 100% auto;
+        background-size: cover;
         background-position: center;
     }
     25%, 48% {
         background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_thank_you_2.jpg');
-        background-size: 100% auto;
+        background-size: cover;
         background-position: center;
     }
     50%, 73% {
         background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_thank_you_3.jpg');
-        background-size: 100% auto;
+        background-size: cover;
         background-position: center;
     }
     75%, 98% {
         background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_thank_you_4.jpg');
-        background-size: 100% auto;
+        background-size: cover;
         background-position: center;
     }
-    100% { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_thank_you_1.jpg'); background-size: 100% auto; background-position: center; }
+    100% { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_thank_you_1.jpg'); background-size: cover; background-position: center; }
 }
