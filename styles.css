@@ -5,6 +5,12 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+@font-face {
+    font-family: 'Southampton';
+    src: url('Southampton.ttf') format('truetype'); /* Pastikan path ini benar */
+    font-weight: normal;
+    font-style: normal;
+}
 
 
 body {
@@ -147,7 +153,8 @@ body {
     color: white;
 }
 
-.bible-verse-section::before {
+.bible-verse-section::before,
+.thank-you-section::before {
     display: none; /* Menghilangkan garis emas di atas untuk bagian ini */
 }
 
@@ -157,8 +164,16 @@ body {
     margin-bottom: 10px; /* Adjusted spacing */
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     margin-top: 0; /* Mengurangi jarak atas dari judul */
+    font-size: 42px; /* Increase font size for Thank You header */
 }
-
+.thank-you-section .section-head {
+    color: white;
+    margin-bottom: 10px; /* Adjusted spacing */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    margin-top: 0;
+    margin-bottom: 60vh; /* Mengurangi jarak atas dari judul */
+    font-size: 48px; /* Increase font size for Thank You header */
+}
 .bible-verse {
     text-align: center;
     font-style: italic;
@@ -335,6 +350,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: contain; /* Changed to contain to show full image */
+    cursor: pointer;
 }
 
 /* Music Player */
@@ -646,23 +662,28 @@ body {
     box-shadow: none;
 }
 
-.music-player button {
-    background: #D4A6A6; /* Dusty Rose */
-    color: white;
-    border: none;
-    width: 30px;
-    height: 30px;
+.music-icon {
+    width: 50px; /* Adjust size as needed */
+    height: 50px;
     border-radius: 50%;
     cursor: pointer;
-    display: flex; /* Ensure it's a flex container */
-    align-items: center;
-    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    animation: rotate 8s linear infinite;
+    animation-play-state: paused; /* Animation is paused by default */
 }
 
-.music-player span {
-    /* This element is no longer present in the HTML */
-    font-size: 14px;
-    font-weight: 500;
+.music-icon:hover {
+    transform: scale(1.1);
+}
+
+.music-icon.playing {
+    animation-play-state: running; /* Animation runs when 'playing' class is added */
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 /* Responsive */
@@ -693,7 +714,7 @@ body {
     }
 
     .photo-album {
-        grid-template-columns: 1fr; /* Single column on mobile */
+        grid-template-columns: 1fr 1fr; /* Two columns on mobile */
         gap: 10px; /* Mengurangi jarak antar foto di mobile */
         max-height: 400px; /* Adjust max-height for mobile */
         padding-right: 0; /* Remove scrollbar padding on mobile */
@@ -982,4 +1003,142 @@ audio {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+/* Photo Album Lightbox/Modal Styles */
+.lightbox {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 2000; /* Make sure it's on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.lightbox-content {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
+.lightbox-prev,
+.lightbox-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.3s;
+    user-select: none; /* Prevent text selection */
+}
+
+.lightbox-next { right: -50px; }
+.lightbox-prev { left: -50px; }
+
+/* Livestream Image Link */
+.livestream-image-link {
+    display: block;
+    margin: 25px auto 0;
+    max-width: 100%;
+    width: 600px; /* Adjust width as needed */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.livestream-image-link img {
+    width: 100%;
+    display: block; /* Removes bottom space under image */
+}
+
+.livestream-image-link:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Thank You Section */
+.thank-you-section {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('background3.jpg') center/cover no-repeat;
+    box-shadow: none;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    min-height: calc(100vh - 40px - 25px);
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.thank-you-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 650px;
+    margin-bottom: 30px;
+}
+
+.sincerely-text {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.signature-names {
+    font-family: 'Sacramento', cursive;
+    font-size: 52px;
+    margin-bottom: 30px;
+}
+
+.signature-names .ampersand {
+    font-family: 'Sacramento', cursive;
+    font-size: 52px; /* Adjust size to blend well */
+    margin: 0 5px;
+}
+
+.hashtag {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    letter-spacing: 1px;
 }

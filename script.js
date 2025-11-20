@@ -25,7 +25,7 @@ function playMusic() {
         audio.play().catch(e => console.log("Playback failed:", e));
         audio.loop = true;
         isPlaying = true;
-        playPauseBtn.textContent = '⏸';
+        playPauseBtn.classList.add('playing');
         // musicStatus.textContent = 'Musik Diputar';
     }
 }
@@ -34,7 +34,7 @@ playPauseBtn.addEventListener('click', function() {
     if (isPlaying) {
         audio.pause();
         isPlaying = false;
-        playPauseBtn.textContent = '▶';
+        playPauseBtn.classList.remove('playing');
         // musicStatus.textContent = 'Putar Musik';
     } else {
         playMusic();
@@ -309,5 +309,56 @@ document.addEventListener('DOMContentLoaded', () => {
     const animatedItems = document.querySelectorAll('.anim-item');
     animatedItems.forEach(item => {
         observer.observe(item);
+    });
+});
+
+// --- Photo Album Lightbox/Slideshow ---
+document.addEventListener('DOMContentLoaded', () => {
+    const lightbox = document.getElementById('photoLightbox');
+    const lightboxImg = document.getElementById('lightboxImage');
+    const closeBtn = document.querySelector('.lightbox-close');
+    const prevBtn = document.querySelector('.lightbox-prev');
+    const nextBtn = document.querySelector('.lightbox-next');
+
+    const albumPhotos = document.querySelectorAll('.photo-album .photo-item img');
+    let currentImageIndex;
+
+    if (!lightbox || !lightboxImg || !closeBtn || !prevBtn || !nextBtn) return;
+
+    const showImage = (index) => {
+        if (index >= albumPhotos.length) {
+            currentImageIndex = 0; // Loop to start
+        } else if (index < 0) {
+            currentImageIndex = albumPhotos.length - 1; // Loop to end
+        } else {
+            currentImageIndex = index;
+        }
+        lightboxImg.src = albumPhotos[currentImageIndex].src;
+    };
+
+    albumPhotos.forEach((img, index) => {
+        img.addEventListener('click', () => {
+            lightbox.style.display = 'block';
+            showImage(index);
+        });
+    });
+
+    closeBtn.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+    });
+
+    prevBtn.addEventListener('click', () => {
+        showImage(currentImageIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        showImage(currentImageIndex + 1);
+    });
+
+    // Close lightbox when clicking outside the image
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+            lightbox.style.display = 'none';
+        }
     });
 });

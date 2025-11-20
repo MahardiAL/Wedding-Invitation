@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Wedding Invitation</title>    
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Wedding Invitation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&family=Sacramento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -204,15 +204,15 @@
             </div>
         </div>
         <!-- Livestream Section -->
-        <div class="section">
+        <div class="section" id="livestreamSection">
             <h2 class="section-head anim-item">Wedding Livestream</h2>
             <p class="livestream-text anim-item delay-1">For our beloved family and friends who are unable to attend in person, we invite you to join us virtually as we say "I do".</p>
             <a href="https://www.youtube.com/live/OmU_AB34DA0?si=Os93JTc9yKr-f5up" class="livestream-btn anim-item delay-2" target="_blank">
                 <i class="fas fa-video"></i> Watch on Youtube
             </a>
-            <div class="video-container anim-item delay-3">
-                <iframe id="youtube-livestream" src="https://www.youtube.com/live/OmU_AB34DA0?si=Os93JTc9yKr-f5up" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+            <a href="https://www.youtube.com/live/OmU_AB34DA0?si=Os93JTc9yKr-f5up" target="_blank" class="livestream-image-link anim-item delay-3">
+                <img src="livestream.png" alt="Watch Livestream">
+            </a>
         </div>
 
         <!-- Wishes Form -->
@@ -272,6 +272,19 @@
                 </div>
             </div>
         </div>
+        <!-- Thank You Section -->
+        <div class="section thank-you-section">
+            <h2 class="section-head anim-item">Thank You</h2>
+            <p class="thank-you-text anim-item">
+                It is an honor and a great joy for us to have you present to share in our happiness and give us your blessings. We sincerely thank you for your presence and well wishes.
+            </p>
+            <p class="sincerely-text anim-item delay-1">Warmest regards,</p>
+            <div class="signature-names anim-item delay-2">
+                Mahardi <span class="ampersand">&</span> Ceren
+            </div>
+            <p class="hashtag anim-item delay-3">#MAHARDIhatiCEREN</p>
+        </div>
+
         <div class="footer">
             <p class="anim-item">We can't wait to celebrate with you! 💕</p>
             <p class="anim-item delay-1">Contact: (+62) 85161801359</p>
@@ -279,19 +292,19 @@
     </div>
     <!-- Music Player -->
     <div class="music-player" id="musicPlayer">
-        <button id="playPauseBtn">▶</button>
+        <img src="music.jpg" alt="Play/Pause Music" id="playPauseBtn" class="music-icon">
     </div>
     
+    <!-- Photo Album Lightbox/Modal -->
+    <div id="photoLightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            <a class="lightbox-prev">&#10094;</a>
+            <img id="lightboxImage" src="" alt="Enlarged Photo">
+            <a class="lightbox-next">&#10095;</a>
+        </div>
+    </div>
+
     <script src="script.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const livestreamFrame = document.getElementById('youtube-livestream');
-            if (livestreamFrame) {
-                livestreamFrame.addEventListener('error', function() {
-                    livestreamFrame.parentElement.style.display = 'none';
-                });
-            }
-        });
-    </script>
 </body>
 </html>
