@@ -141,9 +141,13 @@ body {
 /* Add more if needed */
 
 .bible-verse-section {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                url('background_verse_1.jpg') center/cover no-repeat; /* Using an existing image */
-    box-shadow: none;
+    /* The background is now handled by the animation */
+    background-color: #333; /* Fallback color */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: backgroundCarouselVerse 8s linear infinite;
+    box-shadow: none; /* Tetap di sini untuk menimpa gaya .section */
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
@@ -1117,9 +1121,13 @@ audio {
 
 /* Thank You Section */
 .thank-you-section {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                url('background_thank_you_1.jpg') center/cover no-repeat;
-    box-shadow: none;
+    /* The background is now handled by the animation */
+    background-color: #333; /* Fallback color */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: backgroundCarouselThankYou 8s linear infinite;
+    box-shadow: none; /* Tetap di sini untuk menimpa gaya .section */
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
@@ -1146,13 +1154,13 @@ audio {
 
 .signature-names {
     font-family: 'Sacramento', cursive;
-    font-size: 52px;
+    font-size: 42px;
     margin-bottom: 30px;
 }
 
 .signature-names .ampersand {
     font-family: 'Sacramento', cursive;
-    font-size: 52px; /* Adjust size to blend well */
+    font-size: 42px; /* Adjust size to blend well */
     margin: 0 5px;
 }
 
@@ -1161,4 +1169,52 @@ audio {
     font-weight: 300;
     font-size: 18px;
     letter-spacing: 1px;
+}
+
+/* Background Image Carousel Animation */
+@keyframes backgroundCarouselVerse {
+    0%, 23% {
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_verse_1.jpg');
+        background-size: 100% auto;
+        background-position: center;
+    }
+    25%, 48% {
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_verse_2.jpg');
+        background-size: 100% auto;
+        background-position: center;
+    }
+    50%, 73% {
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_verse_3.jpg');
+        background-size: 100% auto;
+        background-position: center;
+    }
+    75%, 98% {
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_verse_4.jpg');
+        background-size: 100% auto;
+        background-position: center;
+    }
+    100% { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_verse_1.jpg'); background-size: 100% auto; background-position: center; }
+}
+@keyframes backgroundCarouselThankYou {
+    0%, 23% {
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_thank_you_1.jpg');
+        background-size: 100% auto;
+        background-position: center;
+    }
+    25%, 48% {
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_thank_you_2.jpg');
+        background-size: 100% auto;
+        background-position: center;
+    }
+    50%, 73% {
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_thank_you_3.jpg');
+        background-size: 100% auto;
+        background-position: center;
+    }
+    75%, 98% {
+        background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_thank_you_4.jpg');
+        background-size: 100% auto;
+        background-position: center;
+    }
+    100% { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('background_thank_you_1.jpg'); background-size: 100% auto; background-position: center; }
 }
