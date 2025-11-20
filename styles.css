@@ -142,7 +142,7 @@ body {
 
 .bible-verse-section {
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                url('background2.jpeg') center/cover no-repeat; /* Using an existing image */
+                url('background_verse_1.jpg') center/cover no-repeat; /* Using an existing image */
     box-shadow: none;
     padding: 40px 20px;
     display: flex;
@@ -171,7 +171,6 @@ body {
     margin-bottom: 10px; /* Adjusted spacing */
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     margin-top: 0;
-    margin-bottom: 60vh; /* Mengurangi jarak atas dari judul */
     font-size: 48px; /* Increase font size for Thank You header */
 }
 .bible-verse {
@@ -1073,6 +1072,27 @@ audio {
 .lightbox-next { right: -50px; }
 .lightbox-prev { left: -50px; }
 
+/* Responsive Lightbox for Mobile */
+@media (max-width: 768px) {
+    .lightbox-content {
+        max-width: 95vw; /* Allow a bit more width on mobile */
+    }
+
+    .lightbox-close {
+        top: 10px;
+        right: 15px;
+        font-size: 32px;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+        top: 50%; /* Keep vertical alignment */
+        transform: translateY(-50%);
+    }
+    .lightbox-prev { left: 5px; } /* Move inside the screen */
+    .lightbox-next { right: 5px; } /* Move inside the screen */
+}
+
 /* Livestream Image Link */
 .livestream-image-link {
     display: block;
@@ -1098,12 +1118,12 @@ audio {
 /* Thank You Section */
 .thank-you-section {
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                url('background3.jpg') center/cover no-repeat;
+                url('background_thank_you_1.jpg') center/cover no-repeat;
     box-shadow: none;
     padding: 40px 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center content vertically */
+    justify-content: space-between; /* Center content vertically */
     align-items: center; /* Center content horizontally */
     min-height: calc(100vh - 40px - 25px);
     text-align: center;
