@@ -59,7 +59,7 @@ wishesForm.addEventListener('submit', (e) => {
     submittedWishes = true;
     // Tampilkan alert setelah jeda singkat agar form sempat terkirim
     setTimeout(() => {
-        alert(`Terima kasih, ${wishesNameInput.value}! Ucapan Anda telah kami terima.`);
+        alert(`Thank you, ${wishesNameInput.value}! We have received your wish message. We will post it in a minute`);
         wishesForm.reset();
         // Isi kembali nama dari URL jika ada
         if (guestName) {
@@ -71,6 +71,7 @@ wishesForm.addEventListener('submit', (e) => {
 // RSVP Form functionality
 const rsvpForm = document.getElementById('rsvpForm');
 const rsvpNameInput = document.getElementById('rsvpName');
+const rsvpNameGroup = document.getElementById('rsvpNameGroup');
 const guestCountInput = document.getElementById('guestCount');
 const guestCountGroup = document.getElementById('guestCountGroup');
 const statusRadios = rsvpForm.querySelectorAll('input[name="entry.1413813021"]');
@@ -78,11 +79,34 @@ const eventChoiceSelect = document.getElementById('eventChoice');
 let submittedRsvp = false;
 let submittedWishes = false;
 
+// Mengambil parameter 'nama' dari URL
+const urlParams = new URLSearchParams(window.location.search);
+const guestName = urlParams.get('to');
+const guestNameToElement = document.getElementById('guestNameTo');
+const guestNumber = urlParams.get('gid');
+const guestIdInput = document.getElementById('guestId');
+const rsvpText = document.getElementById('rsvpText');
+
+if (guestName) {
+    rsvpNameInput.value = guestName;
+    wishesNameInput.value = guestName;
+    if (guestNameToElement) {
+        guestNameToElement.textContent = `Dear ${guestName},`;
+    }
+}
+
+if (guestNumber){
+    guestIdInput.value = guestNumber;
+}
+
 statusRadios.forEach(radio => {
     radio.addEventListener('change', () => {
         const isAttending = radio.value === 'Yes, I will attend';
         
         if (isAttending) {
+            if (!guestName) {
+                rsvpNameGroup.style.display = 'block';
+            }
             guestCountGroup.style.display = 'block';
             guestCountInput.value = '1'; // Reset ke 1 saat memilih hadir
             // Show event choice only if type is Closed AND user is attending
@@ -91,8 +115,11 @@ statusRadios.forEach(radio => {
                     eventChoiceSelect.value = ''; // Reset pilihan acara ke default
                 }
                 eventChoiceGroup.style.display = 'block';
+            } else {
+                eventChoiceSelect.value = 'Join Holy Matrimony'
             }
         } else {
+            rsvpNameGroup.style.display = 'none';
             guestCountGroup.style.display = 'none';
             guestCountInput.value = '0'; // Atur ke 0 saat tidak bisa hadir
             // Always hide event choice if not attending
@@ -108,23 +135,13 @@ statusRadios.forEach(radio => {
 rsvpForm.addEventListener('submit', () => {
     submittedRsvp = true;
 });
-// Mengambil parameter 'nama' dari URL
-const urlParams = new URLSearchParams(window.location.search);
-const guestName = urlParams.get('to');
-const guestNameToElement = document.getElementById('guestNameTo');
-
-if (guestName) {
-    rsvpNameInput.value = guestName;
-    wishesNameInput.value = guestName;
-    if (guestNameToElement) {
-        guestNameToElement.textContent = `Dear ${guestName},`;
-    }
-}
 
 // Handle invitation type for reception visibility
 const invitationType = urlParams.get('type');
 const eventChoiceGroup = document.getElementById('eventChoiceGroup');
+const rsvpAttendanceGroup = document.getElementById('rsvpAttendanceGroup');
 const weddingDinnerSection = document.getElementById('weddingDinnerSection');
+const rsvpButton = document.getElementById('rsvpButton');
 
 // Show event choice dropdown only if the invitation type is 'Closed'
 if (invitationType === 'Closed') {
@@ -143,9 +160,13 @@ document.body.appendChild(iframe);
 
 iframe.addEventListener('load', function() {
     if (submittedRsvp) {
-        alert(`Terima kasih, ${rsvpNameInput.value}! Konfirmasi Anda telah kami terima.`);
-        rsvpForm.reset();
+        alert(`Thank you ${rsvpNameInput.value}! Your confirmation has been received.`);
+        rsvpNameGroup.style.display = 'none';
         guestCountGroup.style.display = 'none';
+        eventChoiceGroup.style.display = 'none';
+        rsvpAttendanceGroup.style.display = 'none';
+        rsvpButton.style.display = 'none';
+        rsvpText.textContent = `Thank you ${rsvpNameInput.value}! Your confirmation has been received.`;
         submittedRsvp = false;
     }
     if (submittedWishes) {

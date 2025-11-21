@@ -165,18 +165,18 @@
         <!-- RSVP Section -->
         <div class="section">
             <h2 class="section-head anim-item">RSVP</h2>
-            <p class="gift-text anim-item delay-1">Please confirm your attendance to help us prepare for the event better.</p>
+            <p class="gift-text anim-item delay-1" id="rsvpText">Please confirm your attendance to help us prepare for the event better.</p>
             <form class="wishes-form anim-item delay-2" id="rsvpForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfI3iPAJ6_skGBrC3gPa8S94YgnhOjgpuH4wNF_bfEKGI9HEg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
-                <div class="form-group" style="display: none;">
-                    <label for="rsvpName">Your Name</label>
-                    <input type="text" id="rsvpName" name="entry.679294176" placeholder="Enter your name" required>
-                </div>
-                <div class="form-group">
+                <div class="form-group" id="rsvpAttendanceGroup">
                     <label>Will you be attending?</label>
                     <div class="radio-group">
                         <label><input type="radio" name="entry.1413813021" value="Yes, I will attend" required> Yes, I will attend</label>
                         <label><input type="radio" name="entry.1413813021" value="Sorry, I can't make it" required> Sorry, I can't make it</label>
                     </div>
+                </div>
+                <div class="form-group" id="rsvpNameGroup" style="display: none;">
+                    <label for="rsvpName">Your Name</label>
+                    <input type="text" id="rsvpName" name="entry.679294176" placeholder="Enter your name" required>
                 </div>
                 <div class="form-group" id="eventChoiceGroup" style="display: none;">
                     <label for="eventChoice">Which event will you attend?</label>
@@ -185,13 +185,17 @@
                         <option value="Join Holy Matrimony">Join Holy Matrimony</option>
                         <option value="Join Wedding Dinner">Join Wedding Dinner</option>
                         <option value="Join Both Events">Join Both Events</option>
+                        <option hidden value="-">Join Both Events</option>
                     </select>
                 </div>
                 <div class="form-group" id="guestCountGroup" style="display: none;">
                     <label for="guestCount">Number of Guests (including yourself)</label>
                     <input type="number" id="guestCount" name="entry.2012343541" value="1" min="0" max="5" style="width: 100px;">
                 </div>
-                <button type="submit" class="submit-btn">Send Confirmation</button>
+                <div class="form-group" id="guestIdGroup" style="display: none;">
+                    <input type="text" id="guestId" name="entry.1758410630" placeholder="Enter your Id">
+                </div>
+                <button type="submit" class="submit-btn" id="rsvpButton">Send Confirmation</button>
             </form>
         </div>
         
