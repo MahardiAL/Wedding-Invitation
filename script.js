@@ -362,3 +362,48 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const slideshowBible = document.getElementById('slideshowBible');
+    const slideshowThankyou = document.getElementById('slideshowThankyou');
+    const slideCount = 4; // Number of actual unique slides
+    let currentSlide = 0;
+    let isTransitioning = false;
+    
+    function updateSlide() {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        
+        // Move to next slide
+        const translateX = -(currentSlide + 1) * 100;
+        slideshowBible.style.transform = `translateX(${translateX}%)`;
+        slideshowThankyou.style.transform = `translateX(${translateX}%)`;
+        
+        // Handle seamless loop
+        setTimeout(() => {
+            currentSlide = (currentSlide + 1) % slideCount;
+            
+            // When we reach the cloned first slide (slide 4), instantly reset to real first slide (slide 0)
+            if (currentSlide === 0) {
+                slideshowBible.style.transition = 'none';
+                slideshowBible.style.transform = 'translateX(0)';
+                slideshowThankyou.style.transition = 'none';
+                slideshowThankyou.style.transform = 'translateX(0)';
+
+                // Force reflow to apply instant change
+                slideshowBible.offsetHeight;
+                slideshowThankyou.offsetHeight;
+                
+                // Re-enable transition for next cycle
+                slideshowBible.style.transition = 'transform 1s ease-in-out';
+                slideshowThankyou.style.transition = 'transform 1s ease-in-out';
+            }
+            
+            isTransitioning = false;
+        }, 1000); // Match this with CSS transition duration
+    }
+    
+    // Set up auto-rotation
+    setInterval(updateSlide, 2000);
+    
+});
