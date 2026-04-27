@@ -106,6 +106,7 @@ statusRadios.forEach(radio => {
         if (isAttending) {
             if (!guestName) {
                 rsvpNameGroup.style.display = 'block';
+                rsvpNameInput.required = true;
             }
             guestCountGroup.style.display = 'block';
             guestCountInput.value = '1'; // Reset ke 1 saat memilih hadir
@@ -120,6 +121,7 @@ statusRadios.forEach(radio => {
             }
         } else {
             rsvpNameGroup.style.display = 'none';
+            rsvpNameInput.required = false;
             guestCountGroup.style.display = 'none';
             guestCountInput.value = '0'; // Atur ke 0 saat tidak bisa hadir
             // Always hide event choice if not attending
