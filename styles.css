@@ -6,12 +6,12 @@
 }
 
 @font-face {
-    font-family: 'Southampton';
-    src: url('Southampton.ttf') format('truetype'); /* Pastikan path ini benar */
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Canela';
+  src: url('path/to/Canela-Light.woff2') format('woff2'),
+       url('path/to/Canela-Light.woff') format('woff');
+  font-weight: 300; /* Standard weight for 'Light' */
+  font-style: normal;
 }
-
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -47,7 +47,8 @@ body {
 }
 
 .cover-top, .cover-bottom h1 {
-    font-family: 'Great Vibes', cursive;
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
     font-size: 48px; /* Slightly larger for more impact */
     color: white;
     margin-bottom: 20px;
@@ -217,6 +218,11 @@ body {
     margin-bottom: 30px; /* More space below title */
     position: relative;
     letter-spacing: 2px; /* Letter spacing as per reference */
+}
+
+.section-head .small-heading {
+    font-size: 0.5em; /* Mengurangi ukuran font menjadi 70% dari parent-nya */
+    font-weight: 400; /* Membuatnya sedikit lebih tipis */
 }
 
 .subsection-title {
