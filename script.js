@@ -191,7 +191,7 @@ copyButton.addEventListener('click', () => {
         .catch(err => console.error('Failed to copy: ', err));
 });
 // Countdown Timer
-const weddingDate = new Date("September 12, 2026 15:00:00").getTime();
+const weddingDate = new Date("September 12, 2026 10:00:00").getTime();
 
 const countdownFunction = setInterval(function() {
     const now = new Date().getTime();
