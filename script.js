@@ -320,7 +320,7 @@ const observer = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('is-visible'); // Add class when element is visible
         } else {
-            entry.target.classList.remove('is-visible'); // Remove class when element is not visible
+            entry.target.classList.add('is-visible'); // Remove class when element is not visible
         }
     });
 }, {
